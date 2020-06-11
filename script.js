@@ -3,8 +3,10 @@ var score=0;
 var questionIndex;
 var secondsLeft=60;
 var penalty=10;
-var startTime = document.querySelector("#time")
-var quiz = document.querySelector("")
+var hold=0;
+var startQuiz= document.querySelector("#start");
+var currentTime = document.querySelector("#time");
+var quiz = document.querySelector("#quiz");
 
 // Variable for questions with array
 var questions = [
@@ -43,3 +45,18 @@ var questions = [
         answer: "all of the above"
     }
 ]
+
+//Start Quiz 
+startQuiz.addEventListener("click", function(){
+    if(hold===0){
+        hold = setInterval(function(){
+            secondsLeft--;
+            currentTime.textContent= "Time:" + secondsLeft;
+
+        if (secondsLeft = 0 ) {
+            clearInterval(hold);
+            currentTime.textContent= "Time's Up";
+        }
+        }, 1000);
+    } return(questionIndex)
+}
