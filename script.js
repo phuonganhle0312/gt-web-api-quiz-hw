@@ -1,4 +1,10 @@
-
+//Declared variables
+var score=0;
+var questionIndex;
+var secondsLeft=60;
+var penalty=10;
+var startTime = document.querySelector("#time")
+var quiz = document.querySelector("")
 
 // Variable for questions with array
 var questions = [
