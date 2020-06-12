@@ -1,0 +1,23 @@
+* {
+    font-family: sans-serif;
+}
+#time {
+    background-color: purple;
+    color: white;
+}
+h1 {
+    
+    text-align: center;
+}
+p {
+    text-align: center;
+}
+
+button {
+    height:50px; 
+    width:100px; 
+    margin: auto; 
+    position:sticky;
+    top:50%; 
+    left:45%;
+}

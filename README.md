@@ -1,7 +1,7 @@
 # gt-web-api-quiz-hw
 
 ## Description
-T
+This is a multiple choice coding related quiz that utlizes HTML, CSS, and Javascript documents.
 ## Table of Contents
 * Installation
 * Usage
@@ -14,6 +14,7 @@ Clone the repo and open in default browser
 ## Usage
 
 ## Credit
+This coding quiz is a solo project that I built.
 
 ## License
 Copyright <2020> <Phuong D. Le>
