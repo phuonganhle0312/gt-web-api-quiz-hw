@@ -1,7 +1,7 @@
 # gt-web-api-quiz-hw
 
 ## Description
-This is a multiple choice coding related quiz that utlizes HTML, CSS, and Javascript documents.
+This is a multiple choice coding related quiz that utlizes HTML, CSS, and Javascript documents. DOM manipulation is used to make the web application dynamic.
 ## Table of Contents
 * Installation
 * Usage
