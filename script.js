@@ -63,16 +63,17 @@ startQuiz.addEventListener("click", function () {
     } // Renders questions
     render(questionIndex);
 });
-
+//Render questions and choices
 function render(questionIndex) { 
     // Clearing HTML markup
     quiz.innerHTML = "";
     ulChoice.innerHTML = "";
     // For loop to iterate the array
     for (var i = 0; i < questions.length; i++) {
-        var userQuestion = questions[questionIndex].question;
-        var userChoices = questions[questionIndex].choices;
+        var userQuestion = questions[i].question;
+        var userChoices = questions[i].choices;
         quiz.textContent = userQuestion;
+        ulChoice.textContent = userChoices;
 
     }
     // New item for each choice to compare
