@@ -63,9 +63,8 @@ startQuiz.addEventListener("click", function () {
     } // Renders questions
     render(questionIndex);
 });
-//Render questions and choices
-function render(questionIndex) { 
-    // Clearing HTML markup
+// Render questions and choices
+function render(questionIndex) { // Clearing HTML markup
     quiz.innerHTML = "";
     ulChoice.innerHTML = "";
     // For loop to iterate the array
@@ -105,10 +104,17 @@ function compare(event) {
     questionIndex++;
     if (questionIndex >= question.length) {
         finish();
-        announcement.textContent = "Quiz over. You scored " + score + "/6 questions correct.";
     } else {
         render(questionIndex);
-    } quiz.appendChild(announcement);
+    } 
+}
+//Calculate time and score
+if (secondsLeft >= 0) {
+    var timeLeft = secondsLeft;
+    var p = document.createElement("p");
+    clearInterval(hold);
+    paragraph.textContent = "Score: " + timeLeft;
+    quiz.appendChild(p);
 }
 
 // Quiz over page
@@ -118,17 +124,41 @@ function finish() {
     var text = document.createElement("h1");
     text.setAttribute("id", "finish");
     text.textContent = "Quiz Finished";
+    var highscore = document.createElement("h4");
+    highscore.setAttribute("id", "highscore")
+    highscore.textContent= "You scored " + score + "/6 questions correct.";
     quiz.appendChild(text);
-    // adding paragraph
-    var paragraph = document.createElement("paragraph")
-    paragraph.setAttribute("id", "paragraph");
-    quiz.appendChild(paragraph);
+    quiz.appendChild(highscore);
+//Inital form submit
+    var initials = document.createElement("form");
+    initials.setAttribute("id", "initials");
+    initials.textContent = "Initials: ";
+    quiz.appendChild(initials);
+
+    var input = document.createElement("input");
+    input.setAttribute("type", "text");
+    input.setAttribute("id", "text");
+    input.textContent = "";
+    quiz.appendChild(input);
+
+    var submit = document.createElement("button");
+    submit.setAttribute("type", "submit");
+    submit.setAttribute("id", "submit");
+    submit.textContent = "Submit";
+    quiz.appendChild(submit);
+
+    submit.addEventListener("click", function(){
+        var text= input.value;
+        if(text === null) {
+            alert("You must input valid initials.");
+        }
+        else{
+            var finalScore = {
+                text: text,
+                score: timeLeft
+            }
+            alert ("Thank you for your submission");
+        }
+    });
 }
 
-if(secondsLeft>=0) {
-    var timeLeft = secondsLeft;
-    var p = document.createElement("p");
-    clearInterval(hold);
-    paragraph.textContent= "Final score: " + timeLeft;
-    quiz.appendChild(p);
-}
