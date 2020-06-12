@@ -62,16 +62,6 @@ startQuiz.addEventListener("click", function () {
     render(questionIndex)
 });
 
-//Quiz over page
-function finish(){
-    quiz.innerHTML= "";
-    currentTime.innerHTML="";
-    var text=document.createElement("h1");
-    text.setAttribute("id", "finish");
-    text.textContent= "Quiz Finsished";
-    quiz.appendChild(text);
-}
-
 function render(questionIndex) {
     //Clearing HTML markup
     quiz.innerHTML="";
@@ -107,4 +97,29 @@ function compare(event) {
             announcement.textContent = "Incorrect"
         }
     }
+
+}
+
+
+//Quiz over page
+function finish(){
+    quiz.innerHTML= "";
+    currentTime.innerHTML="";
+    var text=document.createElement("h1");
+    text.setAttribute("id", "finish");
+    text.textContent= "Quiz Finished";
+    quiz.appendChild(text);
+//adding paragraph
+var paragraph = document.createElement("paragraph")
+paragraph.setAttribute("id", "paragraph");
+quiz.appendChild(paragraph);
+// Determines the question number
+questionIndex++;
+if (questionIndex >= question.length) {
+    finish();
+    announcement.textContent = "Quiz over. You scored " + score + "/6 questions correct.";
+} else {
+    render(questionIndex);
+} 
+quiz.appendChild(announcement);
 }
