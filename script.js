@@ -8,7 +8,6 @@ var startQuiz = document.querySelector("#start");
 var currentTime = document.querySelector("#time");
 var quiz = document.querySelector("#quiz-section");
 var ulChoice = document.querySelector("#choices");
-
 // Variable for array wirh questions
 var questions = [
     {
@@ -54,7 +53,7 @@ startQuiz.addEventListener("click", function () {
             secondsLeft--;
             currentTime.textContent = "Time:" + secondsLeft;
 
-            if (secondsLeft = 0) {
+            if (secondsLeft <= 0) {
                 clearInterval(hold);
                 currentTime.textContent = "Time's Up";
             }
@@ -62,6 +61,16 @@ startQuiz.addEventListener("click", function () {
     }//Renders questions
     render(questionIndex)
 });
+
+//Quiz over page
+function finish(){
+    quiz.innerHTML= "";
+    currentTime.innerHTML="";
+    var text=document.createElement("h1");
+    text.setAttribute("id", "finish");
+    text.textContent= "Quiz Finsished";
+    quiz.appendChild(text);
+}
 
 function render(questionIndex) {
     //Clearing HTML markup
