@@ -6,7 +6,7 @@ var penalty=10;
 var hold=0;
 var startQuiz= document.querySelector("#start");
 var currentTime = document.querySelector("#time");
-var quiz = document.querySelector("#quiz");
+var quiz = document.querySelector("#quiz-section");
 
 // Variable for questions with array
 var questions = [
@@ -46,7 +46,7 @@ var questions = [
     }
 ]
 
-//Start Quiz 
+//Start Quiz sets timer
 startQuiz.addEventListener("click", function(){
     if(hold===0){
         hold = setInterval(function(){
@@ -58,5 +58,15 @@ startQuiz.addEventListener("click", function(){
             currentTime.textContent= "Time's Up";
         }
         }, 1000);
-    } return(questionIndex)
-}
+    } push(questionIndex)
+});
+//For loop to iterate the array
+    function push(questionIndex){
+        for(var i = 0; i < questions.length; i++) {
+            var userQuestion = questions[questionIndex].question;
+            var userChoices = questions[questionIndex].choices;
+            quiz.textContent = userQuestion;
+            
+        }
+
+    }
