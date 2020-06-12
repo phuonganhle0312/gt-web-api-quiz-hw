@@ -46,7 +46,7 @@ var questions = [
     }
 ];
 
-currentTime.append("time: " + secondsLeft)
+currentTime.append("Time: " + secondsLeft)
 
 // Start Quiz sets timer
 startQuiz.addEventListener("click", function () {
