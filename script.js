@@ -1,6 +1,6 @@
 // Declaring variables
 var score = 0;
-var questionIndex= 0;
+var questionIndex = 0;
 var secondsLeft = 60;
 var penalty = 10;
 var hold = 0;
@@ -8,7 +8,7 @@ var startQuiz = document.querySelector("#start");
 var currentTime = document.querySelector("#time");
 var quiz = document.querySelector("#quiz-section");
 var ulChoice = document.querySelector("#choices");
-// Variable for array wirh questions
+// Variable for array with questions
 var questions = [
     {
         question: "Which coding language allows you to create dynamic applications?",
@@ -44,7 +44,9 @@ var questions = [
         ],
         answer: "all of the above"
     }
-]
+];
+
+currentTime.append("time: " + secondsLeft)
 
 // Start Quiz sets timer
 startQuiz.addEventListener("click", function () {
@@ -52,20 +54,20 @@ startQuiz.addEventListener("click", function () {
         hold = setInterval(function () {
             secondsLeft--;
             currentTime.textContent = "Time:" + secondsLeft;
-
             if (secondsLeft <= 0) {
                 clearInterval(hold);
+                finish();
                 currentTime.textContent = "Time's Up";
             }
         }, 1000);
-    }//Renders questions
-    render(questionIndex)
+    } // Renders questions
+    render(questionIndex);
 });
 
-function render(questionIndex) {
-    //Clearing HTML markup
-    quiz.innerHTML="";
-    ulChoice.innerHTML="";
+function render(questionIndex) { 
+    // Clearing HTML markup
+    quiz.innerHTML = "";
+    ulChoice.innerHTML = "";
     // For loop to iterate the array
     for (var i = 0; i < questions.length; i++) {
         var userQuestion = questions[questionIndex].question;
@@ -89,37 +91,43 @@ function compare(event) {
     if (match.matches("li")) {
         var announcement = document.createElement("div");
         announcement.setAttribute("id", "announcement");
-        if(match.textContent== questions[questionIndex].answer){
+        if (match.textContent == questions[questionIndex].answer) {
             score++;
-            announcement.textContent = "Correct" 
+            announcement.textContent = "Correct"
         } else {
-            secondsLeft= secondsLeft - penalty;
+            secondsLeft = secondsLeft - penalty;
             announcement.textContent = "Incorrect"
         }
     }
 
+    // Determines the question number
+    questionIndex++;
+    if (questionIndex >= question.length) {
+        finish();
+        announcement.textContent = "Quiz over. You scored " + score + "/6 questions correct.";
+    } else {
+        render(questionIndex);
+    } quiz.appendChild(announcement);
 }
 
-
-//Quiz over page
-function finish(){
-    quiz.innerHTML= "";
-    currentTime.innerHTML="";
-    var text=document.createElement("h1");
+// Quiz over page
+function finish() {
+    quiz.innerHTML = "";
+    currentTime.innerHTML = "";
+    var text = document.createElement("h1");
     text.setAttribute("id", "finish");
-    text.textContent= "Quiz Finished";
+    text.textContent = "Quiz Finished";
     quiz.appendChild(text);
-//adding paragraph
-var paragraph = document.createElement("paragraph")
-paragraph.setAttribute("id", "paragraph");
-quiz.appendChild(paragraph);
-// Determines the question number
-questionIndex++;
-if (questionIndex >= question.length) {
-    finish();
-    announcement.textContent = "Quiz over. You scored " + score + "/6 questions correct.";
-} else {
-    render(questionIndex);
-} 
-quiz.appendChild(announcement);
+    // adding paragraph
+    var paragraph = document.createElement("paragraph")
+    paragraph.setAttribute("id", "paragraph");
+    quiz.appendChild(paragraph);
+}
+
+if(secondsLeft>=0) {
+    var timeLeft = secondsLeft;
+    var p = document.createElement("p");
+    clearInterval(hold);
+    paragraph.textContent= "Final score: " + timeLeft;
+    quiz.appendChild(p);
 }
