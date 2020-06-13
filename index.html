@@ -4,21 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Quiz API</title>
-    <link rel="stylesheet" href="./assets/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+   
 </head>
 <body>
     <!--Timer Div-->
-    <div id="time" class="container-md"></div>
+    <div id="time" class="container-md">time:0 </div>
     <!--Quiz Div-->
     <div id="quiz-section" class="container-md">
     <!--Quiz Starter Page-->
+    <div id="prompt">
     <h1>Coding Quiz</h1>
     <p class="container-md">When the quiz starts you will be presented with code related questions. You will have 60 seconds to answer 6 questions. If you answer a question incorrectly then 10 seconds will be subtracted from the clock.
     When the timer reaches 0 the quiz will be over.</p>
+    </div>
     <!--Button-->
     <button id="start">Start Quiz</button>
     <!--Choices-->
+    <div id="questions"></div>
     <ul id="choices" class="container-md">
         <button id= "choiceA"></button>
         <button id= "choiceB"></button>
@@ -26,8 +28,16 @@
         <button id = "choiceD"></button>
     </ul>
     
-</div>
-</div>
-<script src= script.js></script>
+    
+
+ <!--Final Score-->
+ <!-- <H1 id="final-score">Final Score: </H1>
+ <form id="final-score-form">
+     <label>initials</label>
+     <input type="text">
+     <input type="submit">
+ </form> -->
+
 </body>
+<script src= script.js></script>
 </html>
