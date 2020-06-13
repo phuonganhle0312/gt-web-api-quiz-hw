@@ -168,7 +168,7 @@ function render() { // allows you to show question and choices
 
 // Quiz over page
 function finish() {
-    question.style.display = "none";
+    question.innerHTML = "";
         choice1El.style.display = "none";
         choice2El.style.display = "none";
         choice3El.style.display = "none";
@@ -207,14 +207,17 @@ function finish() {
             if (text === null) {
                 alert("You must input valid initials.");
             } else {
-                alert("Thank you for your submission.");
+                var final = {
+                    initial: text,
+                    finalscore: score
+                }
             }
             var scoreStor = localStorage.getItem("scorStor");
             if (scoreStor === null) {
                 scoreStor = [];
             } else {
                 scoreStor = JSON.parse(scoreStor);
-            } scoreStor.push(score);
+            } scoreStor.push(final);
             var newScore = JSON.stringify(scoreStor);
             localStorage.setItem("scoreStor", newScore);
             //goes to high score page
