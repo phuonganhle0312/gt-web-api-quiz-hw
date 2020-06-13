@@ -93,10 +93,10 @@ function compare(event) {
         announcement.setAttribute("id", "announcement");
         if (match.textContent == questions[questionIndex].answer) {
             score++;
-            announcement.textContent = "Correct"
+            announcement.textContent = "Correct";
         } else {
             secondsLeft = secondsLeft - penalty;
-            announcement.textContent = "Incorrect"
+            announcement.textContent = "Incorrect";
         }
     }
 
@@ -157,7 +157,7 @@ function finish() {
                 text: text,
                 score: timeLeft
             }
-            alert ("Thank you for your submission");
+            alert ("Thank you for your submission.");
         }
     });
 }
