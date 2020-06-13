@@ -62,7 +62,7 @@ var q5 = {
            
 
     }
-    var questionArr = [q1, q2, q3, q4, q5];
+    var questionIndex = [q1, q2, q3, q4, q5];
     var index = 0
 
 
@@ -77,24 +77,75 @@ var q5 = {
 currentTime.append("Time: " + secondsLeft)
 
 // Start Quiz sets timer
-startQuiz.addEventListener("click", function () {
-    if (hold === 0) {
-        hold = setInterval(function () {
+function count (){
+    if (interval === 0) {
+        interval = setInterval(function () {
             secondsLeft--;
             currentTime.textContent = "Time:" + secondsLeft;
             if (secondsLeft <= 0) {
-                clearInterval(hold);
+                clearInterval(interval);
                 finish();
                 currentTime.textContent = "Time's Up";
             }
         }, 1000);
     } // Renders questions
-    render(questionIndex);
-});
-// Render questions and choices
-function render(questionIndex) { // Clearing HTML markup
-    quiz.innerHTML = "";
-    ulChoice.innerHTML = "";
+    render();
+}
+
+function render() { 
+   question.style.display= "block";
+   choice1El.style.display = "table-row";
+    choice2El.style.display = "table-row";
+    choice3El.style.display = "table-row";
+    choice4El.style.display = "table-row";
+    if(index < questionIndex.length){
+        question.textContent = questionArr[index].question;
+        choice1El.textContent = questionArr[index].choice1;
+        choice2El.textContent = questionArr[index].choice2;
+        choice3El.textContent = questionArr[index].choice3;
+        choice4El.textContent = questionArr[index].choice4;
+        answer = questionArr[index].answer
+        if (secondsLeft > 10){
+            choice1El.onclick= function(){
+                if(questionIndex[index].choice1 == answer){
+                    scoreTracker++
+                    nextQuestion()
+                } else {
+                    secondsLeft= secondsLeft -10
+                    nextQuestion
+                }
+            }
+            choice2El.onclick = function(){
+                if(questionArr[index].choice2 == answer){
+                    scoreTracker++
+                    nextQuestion()
+                } else {
+                    secondsLeft = secondsLeft - 10
+                    nextQuestion()
+                }
+
+    }
+    choice3El.onclick = function(){
+        if(questionArr[index].choice3 == answer){
+            scoreTracker++
+            nextQuestion()
+        } else {
+            secondsLeft = secondsLeft - 10
+            nextQuestion()
+        }
+    }
+    choice4El.onclick = function(){
+        if(questionArr[index].choice4 == answer){
+            scoreTracker++
+            nextQuestion()
+        } else {
+            secondsLeft = secondsLeft - 10
+            nextQuestion()
+        }
+
+    }
+
+
     // For loop to iterate the array
     for (var i = 0; i < questions.length; i++) {
         var userQuestion = questions[i].question;
