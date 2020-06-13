@@ -97,8 +97,8 @@ function count() {
             secondsLeft--;
             currentTime.textContent = "Time:" + secondsLeft;
             if (secondsLeft <= 0) {
-                clearInterval(interval);
                 finish();
+                clearInterval(interval);
                 currentTime.textContent = "Time's Up";
             }
         }, 1000);
@@ -162,60 +162,65 @@ function render() { // allows you to show question and choices
     } else {
         console.log('you made it through the quiz!')
         currentTime = 0
-    
-        finish()
+        finish();
     }
 }
 
 // Quiz over page
 function finish() {
+    question.style.display = "none";
+        choice1El.style.display = "none";
+        choice2El.style.display = "none";
+        choice3El.style.display = "none";
+        choice4El.style.display = "none";
+       
+        var text = document.createElement("h1");
+        text.setAttribute("id", "finish");
+        text.textContent = "Quiz Finished";
+        
+        var highscore = document.createElement("h4");
+        highscore.setAttribute("id", "highscore")
+        highscore.textContent = "You scored " + score + "/5 questions correct.";
+        question.appendChild(text);
+        question.appendChild(highscore);
+        // Inital form submit
+        var initials = document.createElement("form");
+        initials.setAttribute("id", "initials");
+        initials.textContent = "Initials: ";
+        question.appendChild(initials);
+
+        var input = document.createElement("input");
+        input.setAttribute("type", "text");
+        input.setAttribute("id", "text");
+        input.textContent = "";
+        question.appendChild(input);
+
+        var submit = document.createElement("button");
+        submit.setAttribute("type", "submit");
+        submit.setAttribute("id", "submit");
+        submit.textContent = "Submit";
+        question.appendChild(submit);
+    // Event listener to store initals and scores in local storage
+        submit.addEventListener("click", function (event) {
+            var text = input.value;
+            event.preventDefault();
+            if (text === null) {
+                alert("You must input valid initials.");
+            } else {
+                alert("Thank you for your submission.");
+            }
+            var scoreStor = localStorage.getItem("scorStor");
+            if (scoreStor === null) {
+                scoreStor = [];
+            } else {
+                scoreStor = JSON.parse(scoreStor);
+            } scoreStor.push(score);
+            var newScore = JSON.stringify(scoreStor);
+            localStorage.setItem("scoreStor", newScore);
+            //goes to high score page
+            window.location.replace("./scores.html");
+        }
     
-    choice1El.style.display = "none";
-    choice2El.style.display = "none";
-    choice3El.style.display = "none";
-    choice4El.style.display = "none";
-    // finalScore.style.display = "table-row";
-    // finalScoreBoard.style.display = "table-row"
-    //Conent
-    var text = document.createElement("h1");
-    text.setAttribute("id", "finish");
-    text.textContent = "Quiz Finished";
-    var highscore = document.createElement("h4");
-    highscore.setAttribute("id", "highscore")
-    highscore.textContent= "You scored " + score + "/5 questions correct.";
-    question.appendChild(text);
-    question.appendChild(highscore);
-//Inital form submit
-    var initials = document.createElement("form");
-    initials.setAttribute("id", "initials");
-    initials.textContent = "Initials: ";
-    question.appendChild(initials);
 
-    var input = document.createElement("input");
-    input.setAttribute("type", "text");
-    input.setAttribute("id", "text");
-    input.textContent = "";
-    question.appendChild(input);
 
-    var submit = document.createElement("button");
-    submit.setAttribute("type", "submit");
-    submit.setAttribute("id", "submit");
-    submit.textContent = "Submit";
-    question.appendChild(submit);
-
-    submit.addEventListener("click", function(event){
-        console.log("plague")
-        var text= input.value;
-        event.preventDefault();
-        if(text === null) {
-            alert("You must input valid initials.");
-        }
-        else{
-            // var finalScore = {
-                // text: text,
-                // score 
-            // }
-            alert ("Thank you for your submission.");
-        }
-    });
-}
+        )}

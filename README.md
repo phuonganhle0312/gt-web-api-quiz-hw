@@ -1,7 +1,7 @@
 # gt-web-api-quiz-hw
 
 ## Description
-This is a multiple choice coding related quiz that utlizes HTML, CSS, and Javascript documents. DOM manipulation is used to make the web application dynamic.
+This is a multiple choice coding related quiz that utlizes HTML and Javascript documents. DOM manipulation is used to make the web application dynamic.
 ## Table of Contents
 * Installation
 * Usage
@@ -12,7 +12,8 @@ This is a multiple choice coding related quiz that utlizes HTML, CSS, and Javasc
 Clone the repo and open in default browser
 
 ## Usage
-
+[Deployed Website](https://phuonganhle0312.github.io/gt-web-api-quiz-hw/)
+![Deployed Website](./assets/images/screenshot.png "screenshot")
 ## Credit
 This coding quiz is a solo project that I built.
 
