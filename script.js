@@ -143,57 +143,13 @@ function render() {
             nextQuestion()
         }
 
-    }
-
-
-    // For loop to iterate the array
-    for (var i = 0; i < questions.length; i++) {
-        var userQuestion = questions[i].question;
-        var userChoices = questions[i].choices;
-        quiz.textContent = userQuestion;
-        ulChoice.textContent = userChoices;
-
-    }
-    // New item for each choice to compare
-    userChoices.forEach(function (item) {
-        var list = document.createElement("li");
-        item = list.textContent;
-        quiz.appendChild(ulChoice);
-        ulChoice.appendChild(list);
-        list.addEventListener("click", (compare));
-    })
 }
-
-// Check choices with answer
-function compare(event) {
-    var match = event.target;
-    if (match.matches("li")) {
-        var announcement = document.createElement("div");
-        announcement.setAttribute("id", "announcement");
-        if (match.textContent == questions[questionIndex].answer) {
-            score++;
-            announcement.textContent = "Correct";
-        } else {
-            secondsLeft = secondsLeft - penalty;
-            announcement.textContent = "Incorrect";
-        }
-    }
-
-    // Determines the question number
-    questionIndex++;
-    if (questionIndex >= question.length) {
-        finish();
+function nextQuestion(){
+    if(index < questionIndex.length){
+        questionIndex ++
     } else {
-        render(questionIndex);
-    } 
-}
-//Calculate time and score
-if (secondsLeft >= 0) {
-    var timeLeft = secondsLeft;
-    var p = document.createElement("p");
-    clearInterval(hold);
-    paragraph.textContent = "Score: " + timeLeft;
-    quiz.appendChild(p);
+        finish();
+    }
 }
 
 // Quiz over page
@@ -239,5 +195,5 @@ function finish() {
             alert ("Thank you for your submission.");
         }
     });
-}
+
 
