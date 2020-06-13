@@ -3,49 +3,77 @@ var score = 0;
 var questionIndex = 0;
 var secondsLeft = 60;
 var penalty = 10;
-var hold = 0;
+var interval = 0;
 var startQuiz = document.querySelector("#start");
+startQuiz.addEventListener("click", startQuiz);
 var currentTime = document.querySelector("#time");
-var quiz = document.querySelector("#quiz-section");
-var ulChoice = document.querySelector("#choices");
+var question = document.querySelector("#quiz-section");
+var choice1El = document.querySelector("#choiceA");
+var choice2El = document.querySelector("#choiceB");
+var choice3El = document.querySelector("#choiceC")
+var choice4El = document.querySelector("#choiceD");
 // Variable for array with questions
-var questions = [
+var q1 = 
     {
         question: "Which coding language allows you to create dynamic applications?",
-        choices: [
-            "html", "javascript", "python", "css"
-        ],
-        answer: "javascript"
+        choice1: "html",
+        choice2: "javascript",
+        choice3: "python",
+        choice4:"css",
+        answer: "javascript"   
+       
     },
-    {
+    var q2 = {
         question: "What is a quick expression that writes a message on the debbuging console?",
-        choices: [
-            "alert", "prompt", "console.log", "function"
-        ],
-        answer: "console.log"
+        choice1: "alert",
+        choice2: "prompt",
+        choice3: "console.log",
+        choice4:"function",
+        answer: "console.log"   
+       
     },
-    {
+    var q3 = {
         question: "Arrays, which are a collection of like or similar elements, start with an index of what?",
-        choices: [
-            "0", "x", "1", "i"
-        ],
+        choice1: "0",
+        choice2: "x",
+        choice3: "1",
+        choice4: "i",
         answer: "0"
-    },
-    {
-        question: "What value stands for true or false when it comes to coding?",
-        choices: [
-            "string", "boolean", "variables", "confirm"
-        ],
-        answer: "boolean"
-    }, {
-        question: "What does three equal signs mean in javascript?",
-        choices: [
-            "compares value", "compares type", "all of the above", "none of the above"
-        ],
-        answer: "all of the above"
     }
-];
+    
+    var q4 = {
+        question: "what value stands for true or false when it comes to coding?",
+        choice1: "string",
+        choice2: "boolean",
+        choice3: "variables",
+        choice4: "confirm",
+        answer: "boolean"
+    
+}
+ 
+var q5 = {
+    question: "what does three equal signs mean in javascript?",
+    choice1: "compares value",
+    choice2: "compares type",
+    choice3: "all of the above",
+    choice4: "none of the above",
+    answer: "all of the above"
+ 
+           
 
+    }
+    var questionArr = [q1, q2, q3, q4, q5];
+    var index = 0
+
+
+
+    
+    // Start Quiz sets time
+    function startQuiz() {
+        startButton.style.display = "none"
+        count();
+        render();
+    
 currentTime.append("Time: " + secondsLeft)
 
 // Start Quiz sets timer
